@@ -1,0 +1,19 @@
+{
+    "vscnote_template_default": {
+        "body": ["---", "tags:", "  - $1", "---", "$0"],
+        "description": "VSCNotes note default template.",
+        "prefix": "vsnote_template_default"
+    },
+    "vscnote_template_meeting": {
+        "body": [
+            "---",
+            "tags:",
+            "\t- meeting",
+            "---",
+            "\n# Meeting: $1 - $CURRENT_DATE/$CURRENT_MONTH/$CURRENT_YEAR\n",
+            "$2"
+        ],
+        "description": "Generic Meeting Template",
+        "prefix": "vscnote_template_meeting"
+    }
+}
