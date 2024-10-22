@@ -1,0 +1,63 @@
+// A launch configuration that launches the extension inside a new window
+{
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "args": [
+                "-u",
+                "tdd",
+                "--timeout",
+                "999999",
+                "--colors",
+                "${workspaceFolder}/out/test/unit/**/*.test.js"
+            ],
+            "internalConsoleOptions": "openOnSessionStart",
+            "name": "Unit Tests",
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "request": "launch",
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js",
+                "!**/node_modules/**"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "pwa-node",
+            "outputCapture": "std",
+            "preLaunchTask": "npm: test-compile"
+        },
+        {
+            "name": "Extension",
+            "type": "extensionHost",
+            "request": "launch",
+            "runtimeExecutable": "${execPath}",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceRoot}",
+                "${workspaceRoot}/test/workspace"
+            ],
+            "stopOnEntry": false,
+            "preLaunchTask": "npm: webpack",
+            "outFiles": [
+                "${workspaceFolder}/dist/**/*.js",
+                "!**/node_modules/**"
+            ],
+        },
+        {
+            "name": "Extension Tests",
+            "type": "extensionHost",
+            "request": "launch",
+            "runtimeExecutable": "${execPath}",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceRoot}",
+                "--extensionTestsPath=${workspaceRoot}/test",
+                "${workspaceRoot}/test/workspace"
+            ],
+            "stopOnEntry": false,
+            "preLaunchTask": "npm: configureTestWorkspace",
+            "outFiles": [
+                "${workspaceFolder}/dist/**/*.js",
+                "!**/node_modules/**"
+            ],
+        }
+    ]
+}
